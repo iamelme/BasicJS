@@ -1,0 +1,83 @@
+check = storage.indexOf(operator);
+
+console.log(operator + " " + check);
+
+if (check == 0) {
+  storage.splice(0, 1);
+}
+
+first = storage.slice(0, check).join('');
+storage.splice(0, storage.length, parseInt(first));
+console.log("First array: " + first);
+
+
+if (check > 0) {
+  second = storage.slice(check + 1, storage.length).join('');
+  second = parseInt(second, 10);
+}
+
+
+
+console.log("Second array: " + second);
+var opLength = operator.length;
+
+
+console.log("check");
+console.log(check);
+
+// if (opLength > 1) {
+//   first += partial;
+//
+//   operator = [];
+// }
+
+if (operator == "+") {
+  partial = first + second;
+}
+else if (operator == "-") {
+
+
+  if (second) {
+    partial = first - second;
+
+    first = newStorage.splice(0, storage.length, partial);
+  }
+
+  console.log(storage);
+  // storage = storage.splice(0, storage.length, partial);
+}
+
+else if (operator == "/") {
+  if (second) {
+    partial = first / second;
+
+    first = newStorage.splice(0, storage.length, partial);
+  }
+
+  console.log(storage);
+  // storage = storage.splice(0, storage.length, partial);
+}
+
+else if (operator == "*") {
+  if (second) {
+    partial = first * second;
+
+    first = newStorage.splice(0, storage.length , partial);
+  }
+
+  console.log(storage);
+  // storage = storage.splice(0, storage.length, partial);
+}
+
+console.log("first");
+console.log(first);
+console.log( partial);
+console.log("Partial");
+
+console.log("Storage");
+
+console.log(storage);
+
+console.log("operator");
+
+console.log(operator);

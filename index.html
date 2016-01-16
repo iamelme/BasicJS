@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Your page title</title>
+    <script src="assets/js/jquery.min.js"></script>
+    <title>Basic Calculator</title>
 
 
     <!--[if lte IE 8]>
@@ -19,8 +19,196 @@
    <div class="pure-g">
         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"><p>One</p></div>
         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"><p>Thirds</p></div>
-        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"><p>Thirds</p></div>
+
+
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"><p>
+          <input type="button" class="num num1 btn-value" value="0">
+          <input type="button" class="num num1 btn-value" value="1">
+          <input type="button" class="num num2 btn-value" value="2">
+          <input type="button" class="num num1 btn-value" value="3">
+          <input type="button" class="num num2 btn-value" value="4">
+          <input type="button" class="num num1 btn-value" value="5">
+          <input type="button" class="num num2 btn-value" value="6">
+          <input type="button" class="num num2 btn-value" value="7">
+          <input type="button" class="num num2 btn-value" value="8">
+          <input type="button" class="num num2 btn-value" value="9">
+
+          <br> <br>
+
+          <input type="button" class="operator addSign btn-value" id="add" value="+">
+          <input type="button" class="operator minusSign btn-value" id="minus" value="-">
+          <input type="button" class="operator minusSign btn-value" id="minus" value="/">
+          <input type="button" class="operator minusSign btn-value" id="minus" value="*">
+
+          <input type="button" class="numEqual" value="="></p>
+        </div>
+
+
         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"><p>Thirds</p></div>
     </div>
+
+    <div class="output"></div>
+
+    <script>
+
+    var storage = [],
+        operator = [],
+        partial = 0,
+        temp = [],
+        first = [],
+        second = [],
+        check = [],
+        total = 0;
+
+    $('.btn-value').click(function() {
+      store($(this));
+    });
+
+    $('.numEqual').click(function() {
+      console.log(partial);
+    });
+
+    function store(value) {
+      var newValue = $(value).val();
+
+          storage.push(newValue);
+
+
+      switch(newValue) {
+        case "+":
+          operator += "+";
+          console.log("addition");
+          break;
+        case "-":
+          operator += "-";
+          console.log("minus");
+          break;
+        case "/":
+          operator += "/";
+          console.log("divide");
+          break;
+        case "*":
+          operator += "*";
+          console.log("multiply");
+          break;
+
+      }
+
+
+      check = storage.indexOf(operator);
+
+      console.log(operator + " index " + check);
+
+
+      if( newValue != operator) {
+        first = storage.slice(0, check).join('');
+        first = parseInt(first, 10);
+        console.log("first");
+        console.log(first);
+
+        if (check > 1 ) {
+          second = storage.slice(check + 1, storage.length).join('');
+          second = parseInt(second, 10);
+          console.log("second");
+          console.log(second);
+        }
+
+      }
+
+      if (operator.length > 1) {
+        console.log("sud");
+        storage.splice(0, storage.length, partial);
+
+        // var tiki =  operator.lastIndexOf(operator);
+        // console.log("wew" + operator[tiki]);
+        // storage.splice(storage.length , 0, operator[tiki]);
+
+
+
+        operator = [];
+      }
+
+
+
+      console.log("operator.length");
+      console.log(operator.length);
+
+
+
+      if (operator == "+") {
+        partial = first + second;
+
+        second = [];
+      }
+
+      if (operator == "-") {
+        partial = first - second;
+        second = [];
+      }
+
+      if (operator == "/") {
+        partial = first / second;
+        second = [];
+      }
+
+      if (operator == "*") {
+        partial = first * second;
+        second = [];
+      }
+
+console.log("storage");
+console.log(storage);
+console.log("partial");
+console.log(partial);
+}
+
+
+    function add() {
+      partial = first + second;
+
+
+    }
+
+
+  // var x = ["+", 0, "+", "-"];
+  //
+  // var operator = "";
+  //
+  // var counter = 0;
+  //
+  // // switch(x) {
+  // //    case "+":
+  // //      operator = "+";
+  // //      console.log("addition");
+  // //      break;
+  // //    case "-":
+  // //      operator = "-";
+  // //      console.log("minus");
+  // //      break;
+  // //    case "/":
+  // //      operator = "/";
+  // //      console.log("divide");
+  // //      break;
+  // //    case "*":
+  // //      operator = "*";
+  // //      console.log("multiply");
+  // //      break;
+  // //
+  // //  }
+  //
+  // if (x == "+") {
+  //   operator += "+";
+  // }
+  //
+  //  var test = x.indexOf("+");
+  //  console.log(operator.length);
+  //  console.log(test);
+
+
+
+     </script>
+
+
+
 </body>
 </html>
