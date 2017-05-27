@@ -1,83 +1,110 @@
-check = storage.indexOf(operator);
+var storage = [],
+    operator = [],
+    partial = 0,
+    temp = [],
+    first = [],
+    second = [],
+    check = [],
+    total = 0;
 
-console.log(operator + " " + check);
+$('.btn-value').click(function() {
+  store($(this));
+});
 
-if (check == 0) {
-  storage.splice(0, 1);
-}
-
-first = storage.slice(0, check).join('');
-storage.splice(0, storage.length, parseInt(first));
-console.log("First array: " + first);
-
-
-if (check > 0) {
-  second = storage.slice(check + 1, storage.length).join('');
-  second = parseInt(second, 10);
-}
-
+$('.numEqual').click(function() {
+  console.log(partial);
+});
 
 
-console.log("Second array: " + second);
-var opLength = operator.length;
+function store(value) {
+  var newValue = $(value).val();
+
+ storage.push(newValue);
+
+  switch(newValue) {
+    case "+":
+      operator += "+";
+      console.log("addition");
+      break;
+    case "-":
+      operator += "-";
+      console.log("minus");
+      break;
+    case "/":
+      operator += "/";
+      console.log("divide");
+      break;
+    case "*":
+      operator += "*";
+      console.log("multiply");
+      break;
+
+  }
 
 
-console.log("check");
-console.log(check);
 
-// if (opLength > 1) {
-//   first += partial;
-//
-//   operator = [];
-// }
+  check = storage.indexOf(operator);
 
-if (operator == "+") {
-  partial = first + second;
-}
-else if (operator == "-") {
+  console.log(operator + " index " + check);
 
 
-  if (second) {
+  if( newValue != operator) {
+    first = storage.slice(0, check).join('');
+    first = parseInt(first, 10);
+    console.log("first");
+    console.log(first);
+
+    if (check > 1 ) {
+      second = storage.slice(check + 1, storage.length).join('');
+      second = parseInt(second, 10);
+      console.log("second");
+      console.log(second);
+    }
+
+  }
+
+  if (operator.length > 1) {
+    storage.splice(0, storage.length, partial);
+
+    // var tiki =  operator.lastIndexOf(operator);
+    // console.log("wew" + operator[tiki]);
+    // storage.splice(storage.length , 0, operator[tiki]);
+
+
+
+    operator = [];
+  }
+
+
+
+  console.log("operator.length");
+  console.log(operator.length);
+
+
+
+  if (operator == "+") {
+    partial = first + second;
+
+    second = [];
+  }
+
+  if (operator == "-") {
     partial = first - second;
-
-    first = newStorage.splice(0, storage.length, partial);
+    second = [];
   }
 
-  console.log(storage);
-  // storage = storage.splice(0, storage.length, partial);
-}
-
-else if (operator == "/") {
-  if (second) {
+  if (operator == "/") {
     partial = first / second;
-
-    first = newStorage.splice(0, storage.length, partial);
+    second = [];
   }
 
-  console.log(storage);
-  // storage = storage.splice(0, storage.length, partial);
-}
-
-else if (operator == "*") {
-  if (second) {
+  if (operator == "*") {
     partial = first * second;
-
-    first = newStorage.splice(0, storage.length , partial);
+    second = [];
   }
 
-  console.log(storage);
-  // storage = storage.splice(0, storage.length, partial);
-}
-
-console.log("first");
-console.log(first);
-console.log( partial);
-console.log("Partial");
-
-console.log("Storage");
-
+console.log("storage");
 console.log(storage);
-
-console.log("operator");
-
-console.log(operator);
+console.log("partial");
+console.log(partial);
+}
