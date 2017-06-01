@@ -1,0 +1,43 @@
+var myNum = [];
+
+var temp = [];
+
+
+
+for (var x = 0 ; x < 5; ){
+
+
+	var y = 1;
+	var ran = Math.floor(Math.random() * (10 - 1) + 1);
+ 
+		temp.push(ran);
+       
+		console.log("Temporary " + temp);
+
+		for ( var j = 0; j < temp.length -1; j++){
+
+			console.log("Y " + y);
+			console.log("Random Num " + ran);
+
+			console.log("Temp J" + " [" + j + "] " + temp[j] );
+			if(ran != temp[j]) {
+               y++;
+            } else {
+
+				console.log("naay parehas");
+            }
+			
+            console.log("Temp Length " + temp.length);
+			console.log("-----");
+
+		}
+		
+		if (y === temp.length){
+			myNum.push(ran);
+			x++;
+		}
+        console.log("======");
+		
+	
+}console.log("Temp Length After " + temp.length);
+console.log("Num pushed: " + myNum);
