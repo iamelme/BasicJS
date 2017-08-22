@@ -15,7 +15,9 @@
 <script>
 function palindrome() {
   var str = document.getElementById("inputWord").value,
+      // making String into an Array
       strArr = str.split(""),
+      // Reversing the array and making back to a String
       strArrRev = strArr.reverse().join("");
   
   if(str === strArrRev) {
