@@ -7,41 +7,24 @@
 </head>
 <body>
 
-  <input type="text" placeholder="Input" id="inputWord">
+<input type="text" placeholder="Input" id="inputWord">
   <button onclick="palindrome()">Check</button>
 
   
 <p id="demo" class="demo"></p>
 <script>
-function palindrome(str) {
-
-
-  var str = document.getElementById("inputWord").value;
-  var normalized = str.replace(/[^A-Z0-9]/ig, '').toLowerCase();
-
-  var strLenght = normalized.length;
-
-  var strSub = "";
-
-  var strLen2 = strLenght;
-  var strLen3 = strLenght -1;
-
-  var text;
-
-  for(var i = 0; i < strLenght; i++){
-
-   strSub += normalized.substring(strLen2 --, strLen3--);
-
-  }
-
-  if (normalized == strSub) {
+function palindrome() {
+  var str = document.getElementById("inputWord").value,
+      strArr = str.split(""),
+      strArrRev = strArr.reverse().join("");
+  
+  if(str === strArrRev) {
     text = "It is a Palidrome";
   } else {
     text = "It is not a Palindrome";
   }
-
   document.getElementById("demo").innerHTML = text;
-
+  console.log(strArrRev)
 }
 
 
